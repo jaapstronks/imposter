@@ -4,6 +4,7 @@ let gameState = {
     currentRound: 1,
     currentPlayerIndex: 0,
     hintMode: true,
+    trolMode: false,
     imposters: [],
     currentWord: '',
     scores: {},
@@ -101,6 +102,7 @@ const scoresScreen = document.getElementById('scores-screen');
 
 // Setup elements
 const hintModeCheckbox = document.getElementById('hint-mode');
+const trolModeCheckbox = document.getElementById('trol-mode');
 const playerCountInput = document.getElementById('player-count');
 const playerNamesDiv = document.getElementById('player-names');
 const startGameBtn = document.getElementById('start-game');
@@ -187,6 +189,7 @@ function startGame() {
     // Initialize game state
     gameState.players = players;
     gameState.hintMode = hintModeCheckbox.checked;
+    gameState.trolMode = trolModeCheckbox.checked;
     gameState.currentRound = 1;
     gameState.currentPlayerIndex = 0;
     gameState.scores = {};
@@ -208,23 +211,37 @@ function setupRound() {
     gameState.currentWord = wordData.word;
     gameState.currentHint = wordData.hint;
     
-    // Assign imposters (usually 1, occasionally 2)
+    // Assign imposters based on mode
     const playerCount = gameState.players.length;
-    let imposterCount = 1;
-    
-    // 20% chance of 2 imposters if 5+ players
-    if (playerCount >= 5 && Math.random() < 0.2) {
-        imposterCount = 2;
-    }
-    
-    // Select random imposters
     gameState.imposters = [];
-    const availablePlayers = [...gameState.players];
     
-    for (let i = 0; i < imposterCount; i++) {
-        const randomIndex = Math.floor(Math.random() * availablePlayers.length);
-        const imposter = availablePlayers.splice(randomIndex, 1)[0];
-        gameState.imposters.push(imposter);
+    if (gameState.trolMode) {
+        // Trol mode: random number of imposters (0 to all players)
+        const possibilities = [];
+        
+        // Add possibility of 0 imposters (10% chance)
+        for (let i = 0; i < 1; i++) possibilities.push(0);
+        
+        // Add possibilities of 1 to all imposters
+        for (let count = 1; count <= playerCount; count++) {
+            const weight = count === 1 ? 4 : count === 2 ? 2 : 1; // Favor 1-2 imposters
+            for (let w = 0; w < weight; w++) possibilities.push(count);
+        }
+        
+        const imposterCount = possibilities[Math.floor(Math.random() * possibilities.length)];
+        
+        if (imposterCount > 0) {
+            const availablePlayers = [...gameState.players];
+            for (let i = 0; i < imposterCount; i++) {
+                const randomIndex = Math.floor(Math.random() * availablePlayers.length);
+                const imposter = availablePlayers.splice(randomIndex, 1)[0];
+                gameState.imposters.push(imposter);
+            }
+        }
+    } else {
+        // Normal mode: always exactly 1 imposter
+        const randomIndex = Math.floor(Math.random() * gameState.players.length);
+        gameState.imposters.push(gameState.players[randomIndex]);
     }
     
     gameState.currentPlayerIndex = 0;
@@ -290,7 +307,12 @@ function showWord(e) {
             wordContent.innerHTML = `<div class="imposter">Je bent de IMPOSTER!</div>`;
         }
     } else {
-        wordContent.innerHTML = `<div class="regular">${gameState.currentWord}</div>`;
+        // Check if there are no imposters in trol mode
+        if (gameState.imposters.length === 0) {
+            wordContent.innerHTML = `<div class="regular">${gameState.currentWord}<br><br><small>(Geen imposters deze ronde!)</small></div>`;
+        } else {
+            wordContent.innerHTML = `<div class="regular">${gameState.currentWord}</div>`;
+        }
     }
 }
 
@@ -325,23 +347,42 @@ function updateGameScreen() {
 function generateScoringOptions() {
     scoringOptions.innerHTML = '';
     
-    // Option for imposters winning
-    const impostersWin = document.createElement('div');
-    impostersWin.className = 'score-btn';
-    impostersWin.innerHTML = `Imposter(s) winnen: ${gameState.imposters.join(', ')}`;
-    impostersWin.addEventListener('click', () => toggleScoring(impostersWin, 'imposters'));
-    scoringOptions.appendChild(impostersWin);
-    
-    // Options for each regular player
-    gameState.players.forEach(player => {
-        if (!gameState.imposters.includes(player)) {
+    if (gameState.imposters.length === 0) {
+        // No imposters - all players get points if they realize this
+        gameState.players.forEach(player => {
             const playerWin = document.createElement('div');
             playerWin.className = 'score-btn';
-            playerWin.innerHTML = `${player} raadde correct`;
+            playerWin.innerHTML = `${player} begreep dat er geen imposters waren`;
             playerWin.addEventListener('click', () => toggleScoring(playerWin, 'player', player));
             scoringOptions.appendChild(playerWin);
+        });
+    } else {
+        // Normal scoring with imposters
+        const impostersWin = document.createElement('div');
+        impostersWin.className = 'score-btn';
+        if (gameState.imposters.length === 1) {
+            impostersWin.innerHTML = `Imposter wint: ${gameState.imposters[0]}`;
+        } else {
+            impostersWin.innerHTML = `Imposters winnen: ${gameState.imposters.join(', ')}`;
         }
-    });
+        impostersWin.addEventListener('click', () => toggleScoring(impostersWin, 'imposters'));
+        scoringOptions.appendChild(impostersWin);
+        
+        // Options for each regular player
+        gameState.players.forEach(player => {
+            if (!gameState.imposters.includes(player)) {
+                const playerWin = document.createElement('div');
+                playerWin.className = 'score-btn';
+                if (gameState.imposters.length === 1) {
+                    playerWin.innerHTML = `${player} raadde de imposter`;
+                } else {
+                    playerWin.innerHTML = `${player} raadde de imposters`;
+                }
+                playerWin.addEventListener('click', () => toggleScoring(playerWin, 'player', player));
+                scoringOptions.appendChild(playerWin);
+            }
+        });
+    }
 }
 
 function toggleScoring(btn, type, player = null) {
@@ -425,6 +466,7 @@ function newGame() {
         currentRound: 1,
         currentPlayerIndex: 0,
         hintMode: true,
+        trolMode: false,
         imposters: [],
         currentWord: '',
         scores: {},
