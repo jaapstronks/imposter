@@ -1,0 +1,81 @@
+<!DOCTYPE html>
+<html lang="nl">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Imposter - Het Spel</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <div id="app">
+        <!-- Setup Screen -->
+        <div id="setup-screen" class="screen active">
+            <h1>Imposter</h1>
+            <div class="setup-container">
+                <div class="setting">
+                    <label for="hint-mode">Hint modus:</label>
+                    <input type="checkbox" id="hint-mode" checked>
+                </div>
+                
+                <div class="setting">
+                    <label for="player-count">Aantal spelers (3-8):</label>
+                    <input type="number" id="player-count" min="3" max="8" value="4">
+                </div>
+                
+                <div id="player-names">
+                    <!-- Player name inputs will be generated here -->
+                </div>
+                
+                <button id="start-game" class="btn-primary">Start Spel</button>
+            </div>
+        </div>
+
+        <!-- Word Reveal Screen -->
+        <div id="word-screen" class="screen">
+            <div class="word-container">
+                <h2 id="current-player">Speler aan de beurt</h2>
+                <div class="tap-area" id="tap-area">
+                    <p class="instruction">Houd ingedrukt om je woord te zien</p>
+                    <div id="word-reveal" class="word-reveal hidden">
+                        <div id="word-content"></div>
+                    </div>
+                </div>
+                <button id="next-player" class="btn-secondary hidden">Volgende Speler</button>
+                <button id="start-round" class="btn-primary hidden">Start Ronde</button>
+            </div>
+        </div>
+
+        <!-- Game Screen -->
+        <div id="game-screen" class="screen">
+            <div class="game-container">
+                <h2>Ronde <span id="round-number">1</span></h2>
+                <div class="current-word">
+                    <strong>Woord: <span id="game-word"></span></strong>
+                </div>
+                <div class="starter">
+                    <p><span id="starter-player"></span> mag beginnen!</p>
+                </div>
+                <div class="scoring">
+                    <h3>Wie krijgt een punt?</h3>
+                    <div id="scoring-options">
+                        <!-- Scoring buttons will be generated here -->
+                    </div>
+                </div>
+                <button id="next-round" class="btn-primary">Volgende Ronde</button>
+                <button id="end-game" class="btn-secondary">Spel Beëindigen</button>
+            </div>
+        </div>
+
+        <!-- Scores Screen -->
+        <div id="scores-screen" class="screen">
+            <h2>Eindstand</h2>
+            <div id="final-scores">
+                <!-- Final scores will be displayed here -->
+            </div>
+            <button id="new-game" class="btn-primary">Nieuw Spel</button>
+        </div>
+    </div>
+
+    <script src="script.js"></script>
+</body>
+</html>
