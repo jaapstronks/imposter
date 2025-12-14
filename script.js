@@ -89,6 +89,98 @@ const dutchWords = [
   { word: 'roze', hint: 'flamingo' },
   { word: 'zwart', hint: 'nacht' },
   { word: 'wit', hint: 'sneeuw' },
+
+  // Dutch Culture & Traditions
+  { word: 'Sinterklaas', hint: 'december' },
+  { word: 'pepernoten', hint: 'kruidnootjes' },
+  { word: 'stroopwafel', hint: 'siroop' },
+  { word: 'hagelslag', hint: 'chocolate' },
+  { word: 'poffertjes', hint: 'klein' },
+  { word: 'oliebollen', hint: 'nieuwjaar' },
+  { word: 'bitterballen', hint: 'kroket' },
+  { word: 'drop', hint: 'zoet' },
+  { word: 'Zwarte Piet', hint: 'roetveegpiet' },
+  { word: 'tulpen', hint: 'bollenvelden' },
+
+  // Household Items
+  { word: 'pantoffels', hint: 'voeten' },
+  { word: 'schoenveters', hint: 'strikken' },
+  { word: 'wc-papier', hint: 'rollen' },
+  { word: 'tandenborstel', hint: 'poetsen' },
+  { word: 'wasmachine', hint: 'draaien' },
+  { word: 'stofzuiger', hint: 'zuigen' },
+  { word: 'magnetron', hint: 'straling' },
+  { word: 'koelkast', hint: 'hummen' },
+  { word: 'waterkoker', hint: 'fluiten' },
+  { word: 'afstandsbediening', hint: 'zappen' },
+
+  // Fun & Games
+  { word: 'klappertjespistool', hint: 'knallen' },
+  { word: 'waterpistool', hint: 'zomer' },
+  { word: 'springtouw', hint: 'springen' },
+  { word: 'voetbal', hint: 'trappen' },
+  { word: 'monopoly', hint: 'bankroet' },
+  { word: 'puzzel', hint: 'stukjes' },
+  { word: 'lego', hint: 'blokjes' },
+  { word: 'knikkerbaan', hint: 'rollen' },
+  { word: 'glijbaan', hint: 'playground' },
+  { word: 'schommel', hint: 'heen' },
+
+  // Weather & Seasons
+  { word: 'hagel', hint: 'ijsballetjes' },
+  { word: 'mist', hint: 'damp' },
+  { word: 'regenboog', hint: 'kleuren' },
+  { word: 'onweer', hint: 'donder' },
+  { word: 'sneeuwpop', hint: 'wortel' },
+  { word: 'ijzel', hint: 'glad' },
+  { word: 'zonneschijn', hint: 'warm' },
+  { word: 'wolken', hint: 'grijs' },
+
+  // Transportation
+  { word: 'bromfiets', hint: 'puffen' },
+  { word: 'skateboard', hint: 'wielen' },
+  { word: 'step', hint: 'afzetten' },
+  { word: 'bakfiets', hint: 'kinderen' },
+  { word: 'vrachtwagen', hint: 'groot' },
+  { word: 'ambulance', hint: 'sirene' },
+  { word: 'brandweerauto', hint: 'ladder' },
+  { word: 'helikopter', hint: 'propeller' },
+
+  // Body Parts
+  { word: 'elleboog', hint: 'buigen' },
+  { word: 'knieën', hint: 'hurken' },
+  { word: 'teenagels', hint: 'knippen' },
+  { word: 'wimpers', hint: 'knipperen' },
+  { word: 'kuiten', hint: 'spieren' },
+  { word: 'schouders', hint: 'ophalen' },
+  { word: 'polsen', hint: 'draaien' },
+
+  // School & Work
+  { word: 'puntenslijper', hint: 'scherp' },
+  { word: 'gum', hint: 'wissen' },
+  { word: 'meetlat', hint: 'centimeter' },
+  { word: 'schoolbord', hint: 'krijt' },
+  { word: 'pauze', hint: 'rust' },
+  { word: 'huiswerk', hint: 'thuis' },
+  { word: 'diploma', hint: 'geslaagd' },
+
+  // Technology
+  { word: 'toetsenbord', hint: 'typen' },
+  { word: 'koptelefoon', hint: 'oren' },
+  { word: 'webcam', hint: 'kijken' },
+  { word: 'usb', hint: 'stick' },
+  { word: 'wifi', hint: 'internet' },
+  { word: 'bluetooth', hint: 'draadloos' },
+
+  // Random Fun Stuff
+  { word: 'bellenblaas', hint: 'zeep' },
+  { word: 'kauwgom', hint: 'kauwen' },
+  { word: 'snorharen', hint: 'kat' },
+  { word: 'schaduw', hint: 'donker' },
+  { word: 'echo', hint: 'herhalen' },
+  { word: 'knuffel', hint: 'zacht' },
+  { word: 'nachtmerrie', hint: 'slapen' },
+  { word: 'kietelaar', hint: 'lachen' },
 ];
 
 // DOM Elements
