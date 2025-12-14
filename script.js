@@ -119,6 +119,9 @@ const startRoundBtn = document.getElementById('start-round');
 const roundNumberSpan = document.getElementById('round-number');
 const gameWordSpan = document.getElementById('game-word');
 const starterPlayerSpan = document.getElementById('starter-player');
+const starterPhase = document.getElementById('starter-phase');
+const scoringPhase = document.getElementById('scoring-phase');
+const revealScoringBtn = document.getElementById('reveal-scoring');
 const scoringOptions = document.getElementById('scoring-options');
 const nextRoundBtn = document.getElementById('next-round');
 const endGameBtn = document.getElementById('end-game');
@@ -149,6 +152,7 @@ function setupEventListeners() {
     startRoundBtn.addEventListener('click', startRound);
     
     // Game screen
+    revealScoringBtn.addEventListener('click', revealScoring);
     nextRoundBtn.addEventListener('click', nextRound);
     endGameBtn.addEventListener('click', endGame);
     
@@ -340,7 +344,11 @@ function updateGameScreen() {
     const randomPlayer = gameState.players[Math.floor(Math.random() * gameState.players.length)];
     starterPlayerSpan.textContent = randomPlayer;
     
-    // Generate scoring options
+    // Show starter phase, hide scoring phase
+    starterPhase.classList.remove('hidden');
+    scoringPhase.classList.add('hidden');
+    
+    // Generate scoring options (but don't show yet)
     generateScoringOptions();
 }
 
@@ -418,6 +426,12 @@ function toggleScoring(btn, type, player = null) {
             gameState.selectedWinners.add(player);
         }
     }
+}
+
+function revealScoring() {
+    // Hide starter phase, show scoring phase
+    starterPhase.classList.add('hidden');
+    scoringPhase.classList.remove('hidden');
 }
 
 function nextRound() {

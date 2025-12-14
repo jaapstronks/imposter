@@ -54,20 +54,30 @@
         <div id="game-screen" class="screen">
             <div class="game-container">
                 <h2>Ronde <span id="round-number">1</span></h2>
-                <div class="current-word">
-                    <strong>Woord: <span id="game-word"></span></strong>
-                </div>
-                <div class="starter">
-                    <p><span id="starter-player"></span> mag beginnen!</p>
-                </div>
-                <div class="scoring">
-                    <h3>Wie krijgt een punt? (meerdere mogelijk)</h3>
-                    <div id="scoring-options">
-                        <!-- Scoring buttons will be generated here -->
+                
+                <!-- Starter Phase -->
+                <div id="starter-phase">
+                    <div class="starter">
+                        <p><span id="starter-player"></span> mag beginnen!</p>
+                        <p class="instruction">Speel een rondje en kom terug voor de scores.</p>
                     </div>
+                    <button id="reveal-scoring" class="btn-primary">Toon Woord & Scores</button>
                 </div>
-                <button id="next-round" class="btn-primary">Volgende Ronde</button>
-                <button id="end-game" class="btn-secondary">Spel Beëindigen</button>
+                
+                <!-- Scoring Phase -->
+                <div id="scoring-phase" class="hidden">
+                    <div class="current-word">
+                        <strong>Woord: <span id="game-word"></span></strong>
+                    </div>
+                    <div class="scoring">
+                        <h3>Wie krijgt een punt? (meerdere mogelijk)</h3>
+                        <div id="scoring-options">
+                            <!-- Scoring buttons will be generated here -->
+                        </div>
+                    </div>
+                    <button id="next-round" class="btn-primary">Volgende Ronde</button>
+                    <button id="end-game" class="btn-secondary">Spel Beëindigen</button>
+                </div>
             </div>
         </div>
 
