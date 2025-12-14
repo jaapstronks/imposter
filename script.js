@@ -453,16 +453,31 @@ function generateScoringOptions() {
     const impostersWin = document.createElement('div');
     impostersWin.className = 'score-btn';
     if (gameState.imposters.length === 1) {
-      impostersWin.innerHTML = `Imposter wint: ${gameState.imposters[0]}`;
+      impostersWin.innerHTML = `Imposter wint: ${gameState.imposters[0]} (niet ontdekt)`;
     } else {
       impostersWin.innerHTML = `Imposters winnen: ${gameState.imposters.join(
         ', '
-      )}`;
+      )} (niet ontdekt)`;
     }
     impostersWin.addEventListener('click', () =>
       toggleScoring(impostersWin, 'imposters')
     );
     scoringOptions.appendChild(impostersWin);
+
+    // Add option for imposter declaring themselves and guessing word
+    const impostersGuessed = document.createElement('div');
+    impostersGuessed.className = 'score-btn';
+    if (gameState.imposters.length === 1) {
+      impostersGuessed.innerHTML = `Imposter wint: ${gameState.imposters[0]} (bekende zichzelf & raadde woord)`;
+    } else {
+      impostersGuessed.innerHTML = `Imposters winnen: ${gameState.imposters.join(
+        ', '
+      )} (bekenden zichzelf & raadden woord)`;
+    }
+    impostersGuessed.addEventListener('click', () =>
+      toggleScoring(impostersGuessed, 'imposters')
+    );
+    scoringOptions.appendChild(impostersGuessed);
 
     // Options for each regular player
     gameState.players.forEach((player) => {
