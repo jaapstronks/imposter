@@ -61,14 +61,14 @@ const dutchWords = [
     { word: 'leeuw', hint: 'koning van jungle' },
     { word: 'tijger', hint: 'gestreept' },
     
-    // Well-known artists/people
-    { word: 'Rembrandt', hint: 'Nederlandse schilder' },
-    { word: 'Van Gogh', hint: 'schilder met één oor' },
-    { word: 'Picasso', hint: 'kubistische schilder' },
-    { word: 'Mozart', hint: 'klassieke componist' },
-    { word: 'Beatles', hint: 'Britse band' },
-    { word: 'Einstein', hint: 'slimme wetenschapper' },
-    { word: 'Napoleon', hint: 'Franse keizer' },
+    // Places/Names/Brands
+    { word: 'Stronks', hint: 'achternaam' },
+    { word: 'Rotterdam', hint: 'Nederlandse stad' },
+    { word: 'Amsterdam', hint: 'hoofdstad' },
+    { word: 'Feyenoord', hint: 'voetbalclub' },
+    { word: 'Ajax', hint: 'voetbalclub' },
+    { word: 'schermtijd', hint: 'beeldscherm gebruik' },
+    { word: 'Playstation', hint: 'spelconsole' },
     
     // Activities/concepts
     { word: 'zwemmen', hint: 'in water' },
