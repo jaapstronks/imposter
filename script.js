@@ -8,7 +8,8 @@ let gameState = {
     currentWord: '',
     scores: {},
     gamePhase: 'setup', // setup, reveal, playing, scoring, ended
-    allWordsRevealed: false
+    allWordsRevealed: false,
+    selectedWinners: new Set() // Track multiple winners per round
 };
 
 // Dutch words database
@@ -328,7 +329,7 @@ function generateScoringOptions() {
     const impostersWin = document.createElement('div');
     impostersWin.className = 'score-btn';
     impostersWin.innerHTML = `Imposter(s) winnen: ${gameState.imposters.join(', ')}`;
-    impostersWin.addEventListener('click', () => selectScoring(impostersWin, 'imposters'));
+    impostersWin.addEventListener('click', () => toggleScoring(impostersWin, 'imposters'));
     scoringOptions.appendChild(impostersWin);
     
     // Options for each regular player
@@ -336,36 +337,56 @@ function generateScoringOptions() {
         if (!gameState.imposters.includes(player)) {
             const playerWin = document.createElement('div');
             playerWin.className = 'score-btn';
-            playerWin.innerHTML = `${player} wint (raadde imposter)`;
-            playerWin.addEventListener('click', () => selectScoring(playerWin, 'player', player));
+            playerWin.innerHTML = `${player} raadde correct`;
+            playerWin.addEventListener('click', () => toggleScoring(playerWin, 'player', player));
             scoringOptions.appendChild(playerWin);
         }
     });
 }
 
-function selectScoring(selectedBtn, type, player = null) {
-    // Remove previous selections
-    document.querySelectorAll('.score-btn').forEach(btn => {
-        btn.classList.remove('selected');
-    });
-    
-    selectedBtn.classList.add('selected');
-    
-    // Store selection for when next round is clicked
-    gameState.selectedScoring = { type, player };
+function toggleScoring(btn, type, player = null) {
+    if (type === 'imposters') {
+        // Imposters winning is exclusive - clear all other selections
+        document.querySelectorAll('.score-btn').forEach(button => {
+            button.classList.remove('selected');
+        });
+        gameState.selectedWinners.clear();
+        
+        if (btn.classList.contains('selected')) {
+            btn.classList.remove('selected');
+        } else {
+            btn.classList.add('selected');
+            gameState.imposters.forEach(imposter => {
+                gameState.selectedWinners.add(imposter);
+            });
+        }
+    } else {
+        // Player selection - first clear imposters if selected
+        const impostersBtn = document.querySelector('.score-btn');
+        if (impostersBtn && impostersBtn.classList.contains('selected')) {
+            impostersBtn.classList.remove('selected');
+            gameState.selectedWinners.clear();
+        }
+        
+        // Toggle this player
+        if (btn.classList.contains('selected')) {
+            btn.classList.remove('selected');
+            gameState.selectedWinners.delete(player);
+        } else {
+            btn.classList.add('selected');
+            gameState.selectedWinners.add(player);
+        }
+    }
 }
 
 function nextRound() {
-    // Award points based on selection
-    if (gameState.selectedScoring) {
-        if (gameState.selectedScoring.type === 'imposters') {
-            gameState.imposters.forEach(imposter => {
-                gameState.scores[imposter]++;
-            });
-        } else if (gameState.selectedScoring.type === 'player') {
-            gameState.scores[gameState.selectedScoring.player]++;
-        }
-    }
+    // Award points to all selected winners
+    gameState.selectedWinners.forEach(winner => {
+        gameState.scores[winner]++;
+    });
+    
+    // Clear selections for next round
+    gameState.selectedWinners.clear();
     
     // Setup next round
     gameState.currentRound++;
@@ -408,7 +429,8 @@ function newGame() {
         currentWord: '',
         scores: {},
         gamePhase: 'setup',
-        allWordsRevealed: false
+        allWordsRevealed: false,
+        selectedWinners: new Set()
     };
     
     showScreen('setup');
