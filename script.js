@@ -112,6 +112,8 @@ const currentPlayerSpan = document.getElementById('current-player');
 const tapArea = document.getElementById('tap-area');
 const wordReveal = document.getElementById('word-reveal');
 const wordContent = document.getElementById('word-content');
+const playerNavigation = document.getElementById('player-navigation');
+const backPlayerBtn = document.getElementById('back-player');
 const nextPlayerBtn = document.getElementById('next-player');
 const startRoundBtn = document.getElementById('start-round');
 
@@ -148,6 +150,7 @@ function setupEventListeners() {
     tapArea.addEventListener('touchstart', showWord);
     tapArea.addEventListener('touchend', hideWord);
     
+    backPlayerBtn.addEventListener('click', backPlayer);
     nextPlayerBtn.addEventListener('click', nextPlayer);
     startRoundBtn.addEventListener('click', startRound);
     
@@ -283,16 +286,21 @@ function updateCurrentPlayer() {
     // Reset tap area
     tapArea.classList.remove('pressed');
     wordReveal.classList.add('hidden');
-    nextPlayerBtn.classList.add('hidden');
+    playerNavigation.classList.add('hidden');
     startRoundBtn.classList.add('hidden');
     
-    // Show appropriate button
+    // Show appropriate navigation
     if (gameState.currentPlayerIndex < gameState.players.length - 1) {
-        // More players to go
-        nextPlayerBtn.classList.remove('hidden');
+        // More players to go - show navigation with back button
+        playerNavigation.classList.remove('hidden');
+        backPlayerBtn.disabled = gameState.currentPlayerIndex === 0;
     } else if (!gameState.allWordsRevealed) {
         // Last player, show start round button
         startRoundBtn.classList.remove('hidden');
+        // Also show back button for last player
+        playerNavigation.classList.remove('hidden');
+        backPlayerBtn.disabled = false;
+        nextPlayerBtn.style.display = 'none';
     }
 }
 
@@ -326,9 +334,23 @@ function hideWord(e) {
     wordReveal.classList.add('hidden');
 }
 
+function backPlayer() {
+    if (gameState.currentPlayerIndex > 0) {
+        gameState.currentPlayerIndex--;
+        updateCurrentPlayer();
+        
+        // Reset start round button if we were at the last player
+        if (gameState.currentPlayerIndex < gameState.players.length - 1) {
+            nextPlayerBtn.style.display = '';
+        }
+    }
+}
+
 function nextPlayer() {
-    gameState.currentPlayerIndex++;
-    updateCurrentPlayer();
+    if (gameState.currentPlayerIndex < gameState.players.length - 1) {
+        gameState.currentPlayerIndex++;
+        updateCurrentPlayer();
+    }
 }
 
 function startRound() {
