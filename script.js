@@ -64,8 +64,6 @@ const dutchWords = [
   // Places/Names/Brands
   { word: 'Rotterdam', hint: 'haven' },
   { word: 'Amsterdam', hint: 'grachten' },
-  { word: 'Feyenoord', hint: 'rood' },
-  { word: 'Ajax', hint: 'wit' },
   { word: 'schermtijd', hint: 'ogen' },
   { word: 'Playstation', hint: 'controller' },
 
