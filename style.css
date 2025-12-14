@@ -50,6 +50,74 @@ h2 {
     font-size: 1.8em;
 }
 
+.rules-section {
+    margin-bottom: 25px;
+}
+
+.rules-toggle {
+    background: linear-gradient(135deg, #e9ecef 0%, #f8f9fa 100%);
+    border: 2px solid #dee2e6;
+    border-radius: 10px;
+    padding: 12px 20px;
+    font-size: 16px;
+    font-weight: 600;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    width: 100%;
+    color: #495057;
+}
+
+.rules-toggle:hover {
+    background: linear-gradient(135deg, #dee2e6 0%, #e9ecef 100%);
+    border-color: #adb5bd;
+}
+
+.rules-content {
+    margin-top: 15px;
+    padding: 20px;
+    background: #f8f9fa;
+    border: 2px solid #e9ecef;
+    border-radius: 12px;
+    text-align: left;
+}
+
+.rules-content h3 {
+    color: #495057;
+    margin-bottom: 20px;
+    text-align: center;
+    font-size: 1.4em;
+}
+
+.rule-section {
+    margin-bottom: 20px;
+}
+
+.rule-section h4 {
+    color: #667eea;
+    margin-bottom: 8px;
+    font-size: 1.1em;
+}
+
+.rule-section p {
+    margin-bottom: 8px;
+    line-height: 1.5;
+    color: #495057;
+}
+
+.rule-section ol {
+    margin-left: 20px;
+    color: #495057;
+}
+
+.rule-section li {
+    margin-bottom: 8px;
+    line-height: 1.5;
+}
+
+.rule-section strong {
+    color: #343a40;
+}
+
 .setup-container {
     display: flex;
     flex-direction: column;

@@ -101,6 +101,8 @@ const gameScreen = document.getElementById('game-screen');
 const scoresScreen = document.getElementById('scores-screen');
 
 // Setup elements
+const toggleRulesBtn = document.getElementById('toggle-rules');
+const rulesContent = document.getElementById('rules-content');
 const hintModeCheckbox = document.getElementById('hint-mode');
 const trolModeCheckbox = document.getElementById('trol-mode');
 const playerCountInput = document.getElementById('player-count');
@@ -140,6 +142,7 @@ document.addEventListener('DOMContentLoaded', function() {
 
 function setupEventListeners() {
     // Setup screen
+    toggleRulesBtn.addEventListener('click', toggleRules);
     playerCountInput.addEventListener('change', generatePlayerInputs);
     startGameBtn.addEventListener('click', startGame);
     
@@ -493,6 +496,12 @@ function updateScoresScreen() {
         scoreItem.innerHTML = `<span>${player}</span><span>${score} punten</span>`;
         finalScores.appendChild(scoreItem);
     });
+}
+
+function toggleRules() {
+    rulesContent.classList.toggle('hidden');
+    const isExpanded = !rulesContent.classList.contains('hidden');
+    toggleRulesBtn.textContent = isExpanded ? '📖 Spelregels ▲' : '📖 Spelregels';
 }
 
 function newGame() {

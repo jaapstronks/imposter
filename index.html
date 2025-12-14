@@ -11,6 +11,48 @@
         <!-- Setup Screen -->
         <div id="setup-screen" class="screen active">
             <h1>Imposter</h1>
+            
+            <!-- Game Rules Section -->
+            <div class="rules-section">
+                <button id="toggle-rules" class="rules-toggle">📖 Spelregels</button>
+                <div id="rules-content" class="rules-content hidden">
+                    <h3>Hoe speel je Imposter?</h3>
+                    
+                    <div class="rule-section">
+                        <h4>🎯 Doel van het spel</h4>
+                        <p>De imposter(s) moeten onopgemerkt blijven, terwijl de andere spelers proberen ze te ontmaskeren!</p>
+                    </div>
+                    
+                    <div class="rule-section">
+                        <h4>🔄 Spelverloop</h4>
+                        <ol>
+                            <li><strong>Woord zien:</strong> Geef de telefoon door. Elke speler houdt het scherm ingedrukt om hun woord/rol te zien</li>
+                            <li><strong>Discussie:</strong> Een willekeurige speler begint met een woord dat het geheime woord beschrijft</li>
+                            <li><strong>Ronde per ronde:</strong> Iedereen geeft om de beurt een hint</li>
+                            <li><strong>Stemmen:</strong> Na de discussie stem je wie de imposter is</li>
+                        </ol>
+                    </div>
+                    
+                    <div class="rule-section">
+                        <h4>👥 Rollen</h4>
+                        <p><strong>Gewone spelers:</strong> Kennen het woord en geven hints zonder het woord te noemen</p>
+                        <p><strong>Imposter(s):</strong> Kennen het woord NIET maar proberen mee te doen alsof ze het wel weten</p>
+                    </div>
+                    
+                    <div class="rule-section">
+                        <h4>🏆 Punten verdienen</h4>
+                        <p><strong>Gewone spelers:</strong> 1 punt als ze de imposter(s) correct raden</p>
+                        <p><strong>Imposter(s):</strong> 1 punt als ze niet ontdekt worden</p>
+                    </div>
+                    
+                    <div class="rule-section">
+                        <h4>⚙️ Modi</h4>
+                        <p><strong>Hint modus:</strong> Imposter krijgt een hint over het woord</p>
+                        <p><strong>Trol modus:</strong> Soms zijn er meerdere imposters, of juist helemaal geen!</p>
+                    </div>
+                </div>
+            </div>
+            
             <div class="setup-container">
                 <div class="setting">
                     <label for="hint-mode">Hint modus:</label>
