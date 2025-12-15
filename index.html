@@ -1,84 +1,99 @@
 <!DOCTYPE html>
 <html lang="nl">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Imposter - Het Spel | Gratis Online Party Game</title>
-    <meta name="description" content="Speel Imposter, het ultieme bluf- en deductiespel! Probeer de imposter te ontmaskeren in dit spannende party game voor 3-8 spelers. Gratis te spelen op je telefoon of computer.">
-    <meta name="keywords" content="imposter, spel, party game, blufspel, deductie, groepsspel, online spel, gratis spel, Nederlands">
+    <meta name="description"
+        content="Speel Imposter, het ultieme bluf- en deductiespel! Probeer de imposter te ontmaskeren in dit spannende party game voor 3-8 spelers. Gratis te spelen op je telefoon of computer.">
+    <meta name="keywords"
+        content="imposter, spel, party game, blufspel, deductie, groepsspel, online spel, gratis spel, Nederlands">
     <meta name="author" content="Imposter Game">
     <meta name="robots" content="index, follow">
     <link rel="canonical" href="https://ornate-toffee-e01263.netlify.app/">
-    
+
     <!-- Open Graph / Facebook -->
     <meta property="og:type" content="website">
     <meta property="og:url" content="https://ornate-toffee-e01263.netlify.app/">
     <meta property="og:title" content="Imposter - Het Ultieme Bluf- en Deductiespel">
-    <meta property="og:description" content="Speel Imposter, het spannende party game voor 3-8 spelers! Probeer de imposter te ontmaskeren in dit gratis online bluf- en deductiespel.">
+    <meta property="og:description"
+        content="Speel Imposter, de spannende party game voor 3-8 spelers! Probeer de imposter te ontmaskeren in dit gratis online bluf- en deductiespel.">
     <meta property="og:image" content="https://ornate-toffee-e01263.netlify.app/og-image.png">
     <meta property="og:image:width" content="1200">
     <meta property="og:image:height" content="630">
     <meta property="og:image:alt" content="Imposter - Het Spel - Party Game voor 3-8 Spelers">
     <meta property="og:locale" content="nl_NL">
     <meta property="og:site_name" content="Imposter - Het Spel">
-    
+
     <!-- Twitter -->
     <meta property="twitter:card" content="summary_large_image">
     <meta property="twitter:url" content="https://ornate-toffee-e01263.netlify.app/">
     <meta property="twitter:title" content="Imposter - Het Ultieme Bluf- en Deductiespel">
-    <meta property="twitter:description" content="Speel Imposter, het spannende party game voor 3-8 spelers! Probeer de imposter te ontmaskeren in dit gratis online bluf- en deductiespel.">
+    <meta property="twitter:description"
+        content="Speel Imposter, de spannende party game voor 3-8 spelers! Probeer de imposter te ontmaskeren in dit gratis online bluf- en deductiespel.">
     <meta property="twitter:image" content="https://ornate-toffee-e01263.netlify.app/og-image.png">
-    
+
     <!-- Favicons -->
     <link rel="icon" type="image/x-icon" href="favicon.ico">
     <link rel="apple-touch-icon" sizes="180x180" href="apple-touch-icon.png">
-    
+
     <!-- Theme Color -->
     <meta name="theme-color" content="#667eea">
     <meta name="msapplication-TileColor" content="#667eea">
-    
+
     <link rel="stylesheet" href="style.css">
 </head>
+
 <body>
     <div id="app">
         <!-- Setup Screen -->
         <div id="setup-screen" class="screen active">
             <h1>Imposter</h1>
-            
+
             <!-- Game Rules Section -->
             <div class="rules-section">
                 <button id="toggle-rules" class="rules-toggle">📖 Spelregels</button>
                 <div id="rules-content" class="rules-content hidden">
                     <h3>Hoe speel je Imposter?</h3>
-                    
+
                     <div class="rule-section">
                         <h4>🎯 Doel van het spel</h4>
-                        <p>De imposter(s) moeten onopgemerkt blijven, terwijl de andere spelers proberen ze te ontmaskeren!</p>
+                        <p>De imposter(s) moeten onopgemerkt blijven, terwijl de andere spelers proberen ze te
+                            ontmaskeren!</p>
                     </div>
-                    
+
                     <div class="rule-section">
                         <h4>🔄 Spelverloop</h4>
                         <ol>
-                            <li><strong>Woord zien:</strong> Geef de telefoon door. Elke speler houdt het scherm ingedrukt om hun woord/rol te zien</li>
-                            <li><strong>Discussie start:</strong> Een willekeurige speler begint met een woord dat het geheime woord beschrijft</li>
-                            <li><strong>Hints geven:</strong> Iedereen geeft om de beurt een hint (met de klok mee), maximaal 2 hints per persoon</li>
-                            <li><strong>Imposter kans:</strong> De imposter kan op elk moment de ronde stoppen door te zeggen dat ze de imposter zijn en het woord te raden</li>
-                            <li><strong>Stemmen:</strong> Als alle hints gegeven zijn, wijst iedereen naar wie ze denken dat de imposter is</li>
+                            <li><strong>Woord zien:</strong> Geef de telefoon door. Elke speler houdt het scherm
+                                ingedrukt om hun woord/rol te zien</li>
+                            <li><strong>Discussie start:</strong> Een willekeurige speler begint met een woord dat het
+                                geheime woord beschrijft</li>
+                            <li><strong>Hints geven:</strong> Iedereen geeft om de beurt een hint (met de klok mee),
+                                maximaal 2 hints per persoon</li>
+                            <li><strong>Imposter kans:</strong> De imposter kan op elk moment de ronde stoppen door te
+                                zeggen dat ze de imposter zijn en het woord te raden</li>
+                            <li><strong>Stemmen:</strong> Als alle hints gegeven zijn, wijst iedereen naar wie ze denken
+                                dat de imposter is</li>
                         </ol>
                     </div>
-                    
+
                     <div class="rule-section">
                         <h4>👥 Rollen</h4>
-                        <p><strong>Gewone spelers:</strong> Kennen het woord en geven hints zonder het woord te noemen</p>
-                        <p><strong>Imposter(s):</strong> Kennen het woord NIET maar proberen mee te doen alsof ze het wel weten</p>
+                        <p><strong>Gewone spelers:</strong> Kennen het woord en geven hints zonder het woord te noemen
+                        </p>
+                        <p><strong>Imposter(s):</strong> Kennen het woord NIET maar proberen mee te doen alsof ze het
+                            wel weten</p>
                     </div>
-                    
+
                     <div class="rule-section">
                         <h4>🏆 Punten verdienen</h4>
                         <p><strong>Gewone spelers:</strong> 1 punt als ze de imposter(s) correct raden</p>
-                        <p><strong>Imposter(s):</strong> 1 punt als ze niet ontdekt worden, OF als ze zichzelf bekendmaken en het woord correct raden</p>
+                        <p><strong>Imposter(s):</strong> 1 punt als ze niet ontdekt worden, OF als ze zichzelf
+                            bekendmaken en het woord correct raden</p>
                     </div>
-                    
+
                     <div class="rule-section">
                         <h4>⚙️ Modi</h4>
                         <p><strong>Hint modus:</strong> Imposter krijgt een hint over het woord</p>
@@ -86,27 +101,27 @@
                     </div>
                 </div>
             </div>
-            
+
             <div class="setup-container">
                 <div class="setting">
                     <label for="hint-mode">Hint modus:</label>
                     <input type="checkbox" id="hint-mode" checked>
                 </div>
-                
+
                 <div class="setting">
                     <label for="trol-mode">Trol modus:</label>
                     <input type="checkbox" id="trol-mode">
                 </div>
-                
+
                 <div class="setting">
                     <label for="player-count">Aantal spelers (3-8):</label>
                     <input type="number" id="player-count" min="3" max="8" value="4">
                 </div>
-                
+
                 <div id="player-names">
                     <!-- Player name inputs will be generated here -->
                 </div>
-                
+
                 <button id="start-game" class="btn-primary">Start Spel</button>
             </div>
         </div>
@@ -133,7 +148,7 @@
         <div id="game-screen" class="screen">
             <div class="game-container">
                 <h2>Ronde <span id="round-number">1</span></h2>
-                
+
                 <!-- Starter Phase -->
                 <div id="starter-phase">
                     <div class="starter">
@@ -142,7 +157,7 @@
                     </div>
                     <button id="reveal-scoring" class="btn-primary">Toon Woord & Scores</button>
                 </div>
-                
+
                 <!-- Scoring Phase -->
                 <div id="scoring-phase" class="hidden">
                     <div class="current-word">
@@ -172,4 +187,5 @@
 
     <script src="script.js"></script>
 </body>
+
 </html>
