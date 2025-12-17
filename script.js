@@ -15,172 +15,102 @@ let gameState = {
 
 // Dutch words database
 const dutchWords = [
-  // Everyday objects
-  { word: 'tafel', hint: 'eten' },
-  { word: 'stoel', hint: 'rust' },
-  { word: 'lamp', hint: 'lezen' },
-  { word: 'boek', hint: 'verhaal' },
-  { word: 'pen', hint: 'gedachten' },
-  { word: 'telefoon', hint: 'gesprek' },
-  { word: 'computer', hint: 'werk' },
-  { word: 'fiets', hint: 'milieu' },
-  { word: 'auto', hint: 'reizen' },
-  { word: 'sleutel', hint: 'toegang' },
-  { word: 'tas', hint: 'meenemen' },
-  { word: 'horloge', hint: 'punctueel' },
-  { word: 'bril', hint: 'wazig' },
-  { word: 'paraplu', hint: 'nat' },
-  { word: 'spiegel', hint: 'uiterlijk' },
-
-  // Food items
-  { word: 'appel', hint: 'gezond' },
-  { word: 'banaan', hint: 'potassium' },
-  { word: 'brood', hint: 'ontbijt' },
-  { word: 'kaas', hint: 'calcium' },
-  { word: 'melk', hint: 'wit' },
-  { word: 'pizza', hint: 'Italië' },
-  { word: 'koffie', hint: 'wakker' },
-  { word: 'thee', hint: 'ceremonie' },
-  { word: 'chocolade', hint: 'troost' },
-  { word: 'ijs', hint: 'koud' },
-  { word: 'koekje', hint: 'zoet' },
-  { word: 'vis', hint: 'omega' },
-  { word: 'vlees', hint: 'eiwitten' },
-  { word: 'salade', hint: 'dieet' },
-  { word: 'soep', hint: 'warm' },
-
-  // Animals
-  { word: 'hond', hint: 'trouw' },
-  { word: 'kat', hint: 'onafhankelijk' },
-  { word: 'paard', hint: 'kracht' },
-  { word: 'koe', hint: 'veld' },
-  { word: 'varken', hint: 'slim' },
-  { word: 'vogel', hint: 'vrijheid' },
-  { word: 'vis', hint: 'stil' },
-  { word: 'olifant', hint: 'geheugen' },
-  { word: 'leeuw', hint: 'koning' },
-  { word: 'tijger', hint: 'solo' },
-
-  // Places/Names/Brands
-  { word: 'Rotterdam', hint: 'haven' },
-  { word: 'Amsterdam', hint: 'grachten' },
-  { word: 'schermtijd', hint: 'ogen' },
-  { word: 'Playstation', hint: 'controller' },
-
-  // Activities/concepts
-  { word: 'zwemmen', hint: 'fitness' },
-  { word: 'lopen', hint: 'beweging' },
-  { word: 'slapen', hint: 'rust' },
-  { word: 'eten', hint: 'smaak' },
-  { word: 'lezen', hint: 'ontsnapping' },
-  { word: 'schrijven', hint: 'creativiteit' },
-  { word: 'tekenen', hint: 'expressie' },
-  { word: 'zingen', hint: 'emotie' },
-  { word: 'dansen', hint: 'ritme' },
-  { word: 'spelen', hint: 'plezier' },
-
-  // Colors
-  { word: 'rood', hint: 'passie' },
-  { word: 'blauw', hint: 'kalm' },
-  { word: 'groen', hint: 'hoop' },
-  { word: 'geel', hint: 'vrolijk' },
-  { word: 'paars', hint: 'mystiek' },
-  { word: 'oranje', hint: 'energie' },
-  { word: 'roze', hint: 'romantiek' },
-  { word: 'zwart', hint: 'elegantie' },
-  { word: 'wit', hint: 'puurheid' },
-
-  // Dutch Culture & Traditions
-  { word: 'Sinterklaas', hint: 'december' },
-  { word: 'pepernoten', hint: 'kruidnootjes' },
-  { word: 'stroopwafel', hint: 'siroop' },
-  { word: 'hagelslag', hint: 'chocolate' },
-  { word: 'poffertjes', hint: 'klein' },
-  { word: 'oliebollen', hint: 'nieuwjaar' },
-  { word: 'bitterballen', hint: 'kroket' },
-  { word: 'drop', hint: 'zoet' },
-  { word: 'Zwarte Piet', hint: 'roetveegpiet' },
-  { word: 'tulpen', hint: 'bollenvelden' },
-
-  // Household Items
-  { word: 'pantoffels', hint: 'comfort' },
-  { word: 'schoenveters', hint: 'verbinden' },
-  { word: 'wc-papier', hint: 'zachtheid' },
-  { word: 'tandenborstel', hint: 'routine' },
-  { word: 'wasmachine', hint: 'schoon' },
-  { word: 'stofzuiger', hint: 'stilte' },
-  { word: 'magnetron', hint: 'snel' },
-  { word: 'koelkast', hint: 'bewaren' },
-  { word: 'waterkoker', hint: 'thee' },
-  { word: 'afstandsbediening', hint: 'controle' },
-
-  // Fun & Games
-  { word: 'klappertjespistool', hint: 'knallen' },
-  { word: 'waterpistool', hint: 'zomer' },
-  { word: 'springtouw', hint: 'springen' },
-  { word: 'voetbal', hint: 'trappen' },
-  { word: 'monopoly', hint: 'bankroet' },
-  { word: 'puzzel', hint: 'stukjes' },
-  { word: 'lego', hint: 'blokjes' },
-  { word: 'knikkerbaan', hint: 'rollen' },
-  { word: 'glijbaan', hint: 'playground' },
-  { word: 'schommel', hint: 'heen' },
-
-  // Weather & Seasons
-  { word: 'hagel', hint: 'ijsballetjes' },
-  { word: 'mist', hint: 'damp' },
-  { word: 'regenboog', hint: 'kleuren' },
-  { word: 'onweer', hint: 'donder' },
-  { word: 'sneeuwpop', hint: 'wortel' },
-  { word: 'ijzel', hint: 'glad' },
-  { word: 'zonneschijn', hint: 'warm' },
-  { word: 'wolken', hint: 'grijs' },
-
-  // Transportation
-  { word: 'bromfiets', hint: 'puffen' },
-  { word: 'skateboard', hint: 'wielen' },
-  { word: 'step', hint: 'afzetten' },
-  { word: 'bakfiets', hint: 'kinderen' },
-  { word: 'vrachtwagen', hint: 'groot' },
-  { word: 'ambulance', hint: 'sirene' },
-  { word: 'brandweerauto', hint: 'ladder' },
-  { word: 'helikopter', hint: 'propeller' },
-
-  // Body Parts
-  { word: 'elleboog', hint: 'buigen' },
-  { word: 'knieën', hint: 'hurken' },
-  { word: 'teenagels', hint: 'knippen' },
-  { word: 'wimpers', hint: 'knipperen' },
-  { word: 'kuiten', hint: 'spieren' },
-  { word: 'schouders', hint: 'ophalen' },
-  { word: 'polsen', hint: 'draaien' },
-
-  // School & Work
-  { word: 'puntenslijper', hint: 'scherp' },
-  { word: 'gum', hint: 'wissen' },
-  { word: 'meetlat', hint: 'centimeter' },
-  { word: 'schoolbord', hint: 'krijt' },
-  { word: 'pauze', hint: 'rust' },
-  { word: 'huiswerk', hint: 'thuis' },
-  { word: 'diploma', hint: 'geslaagd' },
-
-  // Technology
-  { word: 'toetsenbord', hint: 'communicatie' },
-  { word: 'koptelefoon', hint: 'luisteren' },
-  { word: 'webcam', hint: 'videobellen' },
-  { word: 'usb', hint: 'overdragen' },
-  { word: 'wifi', hint: 'verbinding' },
-  { word: 'bluetooth', hint: 'paren' },
-
-  // Random Fun Stuff
-  { word: 'bellenblaas', hint: 'zeep' },
-  { word: 'kauwgom', hint: 'kauwen' },
-  { word: 'snorharen', hint: 'kat' },
-  { word: 'schaduw', hint: 'donker' },
-  { word: 'echo', hint: 'herhalen' },
-  { word: 'knuffel', hint: 'zacht' },
-  { word: 'nachtmerrie', hint: 'slapen' },
-  { word: 'kietelaar', hint: 'lachen' },
+  // More specific Dutch words + indirect hints (not too direct)
+  { word: 'kerstboom', hint: 'naalden in de stofzuiger' },
+  { word: 'bouwmarkt', hint: 'zaagsel op je schoenen' },
+  { word: 'tuinbroek', hint: 'verfspatten op de knieën' },
+  { word: 'elleboog', hint: 'tafelrand-ongelukje' },
+  { word: 'kruimeldief', hint: 'na het ontbijt even snel' },
+  { word: 'rolmaat', hint: 'klik-klak aan je riem' },
+  { word: 'waterpas', hint: 'een bubbel zegt genoeg' },
+  { word: 'accuboormachine', hint: 'lege batterij op het slechtste moment' },
+  { word: 'inbussleutel', hint: 'altijd kwijt bij een Ikea-doos' },
+  { word: 'tiewrap', hint: 'plastic handboeitje' },
+  { word: 'ducttape', hint: 'noodoplossing op rol' },
+  { word: 'post-its', hint: 'gele vierkantjes met schuldgevoel' },
+  { word: 'ov-chipkaart', hint: 'piep bij het poortje' },
+  { word: 'tikkie', hint: 'betaalverzoek na een drankje' },
+  { word: 'fietsbel', hint: 'ding-dong in de verte' },
+  { word: 'bakfiets', hint: 'een hele achterbank in een bak' },
+  { word: 'regenjas', hint: 'kraag omhoog tegen de wind' },
+  { word: 'paraplu', hint: 'binnenstebuiten op de hoek' },
+  { word: 'sinterklaasintocht', hint: 'koude handen langs de kade' },
+  { word: 'oliebollenkraam', hint: 'poedersuiker op je jas' },
+  { word: 'stroopwafel', hint: 'warm tussen twee handen' },
+  { word: 'hagelslag', hint: 'kleine korrels in de boter' },
+  { word: 'bitterballen', hint: 'te heet van binnen' },
+  { word: 'dropveters', hint: 'lange zwarte slierten' },
+  { word: 'kinderfeestje', hint: 'cakekruimels en chaos' },
+  { word: 'stoepkrijt', hint: 'een regenbui wist alles uit' },
+  { word: 'knikkerbaan', hint: 'rollen en wachten op het geluid' },
+  { word: 'monopoly', hint: 'ruzie om de bank' },
+  { word: 'lego-steentje', hint: 'blote voeten-vijand' },
+  { word: 'puzzelstukje', hint: 'net niet de goeie vorm' },
+  { word: 'afstandsbediening', hint: 'verdwijnt altijd in de bank' },
+  { word: 'oplaadkabel', hint: 'knoop in je la' },
+  { word: 'airfryer', hint: 'krokant zonder frituurvet' },
+  { word: 'magnetron', hint: 'koud vanbinnen, lava aan de rand' },
+  { word: 'waterkoker', hint: 'klik—en dan wachten' },
+  { word: 'kaasschaaf', hint: 'krullen op je boterham' },
+  { word: 'pindakaas', hint: 'mes blijft rechtop staan' },
+  { word: 'eierwekker', hint: 'tikkend geduld' },
+  { word: 'thermoskan', hint: 'lauwe verrassing na uren' },
+  { word: 'koelkastmagneet', hint: 'souvenirs op metaal' },
+  { word: 'wasmand', hint: 'altijd voller dan je dacht' },
+  { word: 'droogrek', hint: 'een hindernisbaan in de kamer' },
+  { word: 'tandenborstel', hint: 'slaperige routine' },
+  { word: 'wc-rol', hint: 'altijd pas op als hij leeg is' },
+  { word: 'kattenbak', hint: 'korrels onder je sokken' },
+  { word: 'hondenriem', hint: 'sleurt je de deur uit' },
+  { word: 'koffievlek', hint: 'altijd op een wit shirt' },
+  { word: 'parkeerboete', hint: 'een briefje onder je ruitenwisser' },
+  { word: 'fietspomp', hint: 'sissen bij het ventiel' },
+  { word: 'sleutelbos', hint: 'altijd de verkeerde eerst' },
+  { word: 'deurmat', hint: 'modderige begroeting' },
+  { word: 'brievenbus', hint: 'met reclame gevuld' },
+  { word: 'pakketbezorger', hint: 'net weg als je opendoet' },
+  { word: 'treinvertraging', hint: 'omroepstem en zuchten' },
+  { word: 'spaarpot', hint: 'rammelt als je schudt' },
+  { word: 'boodschappenkarretje', hint: 'wiel dat altijd trekt' },
+  { word: 'bonuskaart', hint: 'piep bij de kassa' },
+  { word: 'frikandelbroodje', hint: 'warm uit een papierzak' },
+  { word: 'kapsalon', hint: 'aluminium bakje op schoot' },
+  { word: 'snackbar', hint: 'neonlicht en sausbakjes' },
+  { word: 'kruidenierszak', hint: 'scheurt bij de stoep' },
+  { word: 'plakbandhouder', hint: 'dat kartelrandje' },
+  { word: 'puntenslijper', hint: 'houtkrullen in je etui' },
+  { word: 'schoolbordkrijt', hint: 'piepen op je tanden' },
+  { word: 'gymtas', hint: 'een geur die blijft' },
+  { word: 'markeerstift', hint: 'gele vingers na het leren' },
+  { word: 'agenda', hint: 'leugens over productiviteit' },
+  { word: 'koptelefoon', hint: 'wereld uit, muziek aan' },
+  { word: 'webcam', hint: 'altijd nét te hoog' },
+  { word: 'wifi-wachtwoord', hint: 'op een papiertje bij de router' },
+  { word: 'bluetooth', hint: 'waarom ziet hij ’m niet?' },
+  { word: 'speelgoedtrein', hint: 'rondjes om de tafelpoten' },
+  { word: 'sneeuwbal', hint: 'handschoenen worden nat' },
+  { word: 'sneeuwpop', hint: 'wortel die scheef zakt' },
+  { word: 'regenboog', hint: 'zonnebril én regen tegelijk' },
+  { word: 'mistlamp', hint: 'twee felle ogen in het grijs' },
+  { word: 'zomervakantie', hint: 'zand in je tas' },
+  { word: 'strandhanddoek', hint: 'altijd vol korrels' },
+  { word: 'zonnebrand', hint: 'witte strepen op schouders' },
+  { word: 'thermometer', hint: 'die ene piep in je oor' },
+  { word: 'pleister', hint: 'los aan de rand na een dag' },
+  { word: 'knie', hint: 'krak bij traplopen' },
+  { word: 'pols', hint: 'horloge-afdruk na sporten' },
+  { word: 'schouder', hint: 'tasband die snijdt' },
+  { word: 'wimper', hint: 'in je oog precies nu' },
+  { word: 'teenagel', hint: 'sokken blijven haken' },
+  { word: 'kuit', hint: 'nachtelijke kramp' },
+  { word: 'tuinslang', hint: 'altijd in de knoop' },
+  { word: 'grasmaaier', hint: 'benzinegeur en lawaai' },
+  { word: 'bladblazer', hint: 'ruzie met de buren' },
+  { word: 'vogeltje', hint: 'chips uit je hand gejat' },
+  { word: 'duif', hint: 'een stoep vol voetstapjes' },
+  { word: 'meesje', hint: 'een flits in de tuin' },
+  { word: 'labrador', hint: 'kwijl op je broekspijp' },
+  { word: 'kattenmandje', hint: 'wordt genegeerd voor de doos' },
 ];
 
 // DOM Elements
@@ -242,6 +172,17 @@ const scoringOptions = document.getElementById(
 const nextRoundBtn = document.getElementById('next-round');
 const endGameBtn = document.getElementById('end-game');
 
+// Round summary modal elements
+const roundSummaryModal = document.getElementById(
+  'round-summary-modal'
+);
+const roundSummaryScores = document.getElementById(
+  'round-summary-scores'
+);
+const continueToWordBtn = document.getElementById(
+  'continue-to-word'
+);
+
 // Scores elements
 const finalScores = document.getElementById('final-scores');
 const newGameBtn = document.getElementById('new-game');
@@ -276,6 +217,7 @@ function setupEventListeners() {
   revealScoringBtn.addEventListener('click', revealScoring);
   nextRoundBtn.addEventListener('click', nextRound);
   endGameBtn.addEventListener('click', endGame);
+  continueToWordBtn.addEventListener('click', continueToWord);
 
   // Scores screen
   newGameBtn.addEventListener('click', newGame);
@@ -649,9 +591,39 @@ function nextRound() {
   // Clear selections for next round
   gameState.selectedWinners.clear();
 
-  // Setup next round
+  // Setup next round (word/imposters), but show the score first
   gameState.currentRound++;
   setupRound();
+  showRoundSummary();
+}
+
+function showRoundSummary() {
+  roundSummaryScores.innerHTML = '';
+
+  // Sort players by score
+  const sortedPlayers = Object.entries(gameState.scores).sort(
+    ([, a], [, b]) => b - a
+  );
+
+  const maxScore = Math.max(
+    ...Object.values(gameState.scores)
+  );
+
+  sortedPlayers.forEach(([player, score]) => {
+    const scoreItem = document.createElement('div');
+    scoreItem.className = 'score-item';
+    if (score === maxScore) {
+      scoreItem.classList.add('winner');
+    }
+    scoreItem.innerHTML = `<span>${player}</span><span>${score} punten</span>`;
+    roundSummaryScores.appendChild(scoreItem);
+  });
+
+  roundSummaryModal.classList.remove('hidden');
+}
+
+function continueToWord() {
+  roundSummaryModal.classList.add('hidden');
   showScreen('word');
 }
 
