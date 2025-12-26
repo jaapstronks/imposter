@@ -13,6 +13,9 @@ let gameState = {
   selectedWinners: new Set(), // Track multiple winners per round
 };
 
+const MIN_PLAYERS = 3;
+const MAX_PLAYERS = 12;
+
 // Dutch words database
 const dutchWords = [
   // More specific Dutch words + indirect hints (not too direct)
@@ -227,7 +230,7 @@ function setupEventListeners() {
 }
 
 function generatePlayerInputs() {
-  const count = parseInt(playerCountInput.value);
+  const count = getValidatedPlayerCount();
   playerNamesDiv.innerHTML = '';
 
   for (let i = 0; i < count; i++) {
@@ -241,8 +244,22 @@ function generatePlayerInputs() {
   }
 }
 
+function getValidatedPlayerCount() {
+  const raw = parseInt(playerCountInput.value, 10);
+  const safe =
+    Number.isFinite(raw) && raw > 0 ? raw : MIN_PLAYERS;
+  const clamped = Math.min(
+    MAX_PLAYERS,
+    Math.max(MIN_PLAYERS, safe)
+  );
+  if (String(clamped) !== String(playerCountInput.value)) {
+    playerCountInput.value = String(clamped);
+  }
+  return clamped;
+}
+
 function startGame() {
-  const count = parseInt(playerCountInput.value);
+  const count = getValidatedPlayerCount();
   const players = [];
 
   // Validate player names
