@@ -12,10 +12,31 @@ export function generatePlayerInputs() {
     const playerInput = document.createElement('div');
     playerInput.className = 'player-input';
     playerInput.innerHTML = `
-            <label>Speler ${i + 1}:</label>
+            <label for="player-${i}">Speler ${i + 1}:</label>
             <input type="text" placeholder="Naam" id="player-${i}" required>
         `;
     dom.playerNamesDiv.appendChild(playerInput);
+
+    const input = /** @type {HTMLInputElement|null} */ (
+      playerInput.querySelector(`#player-${i}`)
+    );
+    if (!input) continue;
+
+    // Make tapping the row/label reliably focus the input (mobile-friendly)
+    playerInput.addEventListener('click', (e) => {
+      if (e.target !== input) input.focus();
+    });
+
+    // Keyboard UX: Enter moves to next input (or to Start button on last)
+    input.addEventListener('keydown', (e) => {
+      if (e.key !== 'Enter') return;
+      e.preventDefault();
+      const next = /** @type {HTMLInputElement|null} */ (
+        document.getElementById(`player-${i + 1}`)
+      );
+      if (next) next.focus();
+      else dom.startGameBtn.focus();
+    });
   }
 }
 
