@@ -6,12 +6,14 @@ import {
 } from './controllers/setupController.js';
 import {
   backPlayer,
+  backToGame,
   hideWord,
   nextPlayer,
   showWord,
   startRound,
 } from './controllers/wordController.js';
 import {
+  backToWords,
   continueToWord,
   endGame,
   nextRound,
@@ -36,8 +38,10 @@ function setupEventListeners() {
   dom.backPlayerBtn.addEventListener('click', backPlayer);
   dom.nextPlayerBtn.addEventListener('click', nextPlayer);
   dom.startRoundBtn.addEventListener('click', startRound);
+  dom.backToGameBtn.addEventListener('click', backToGame);
 
   // Game screen
+  dom.backToWordsBtn.addEventListener('click', backToWords);
   dom.revealScoringBtn.addEventListener('click', revealScoring);
   dom.nextRoundBtn.addEventListener('click', nextRound);
   dom.endGameBtn.addEventListener('click', endGame);

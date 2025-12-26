@@ -57,4 +57,8 @@ export function startRound() {
   showScreen('game');
 }
 
+export function backToGame() {
+  showScreen('game');
+}
+
 

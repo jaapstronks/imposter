@@ -8,6 +8,8 @@ export function createInitialGameState() {
     imposters: [],
     currentWord: '',
     currentHint: '',
+    starterPlayer: '',
+    gameStep: 'starter', // starter | scoring
     scores: {},
     gamePhase: 'setup', // setup, reveal, playing, scoring, ended
     allWordsRevealed: false,

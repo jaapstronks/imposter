@@ -23,10 +23,12 @@ export const dom = {
   backPlayerBtn: document.getElementById('back-player'),
   nextPlayerBtn: document.getElementById('next-player'),
   startRoundBtn: document.getElementById('start-round'),
+  backToGameBtn: document.getElementById('back-to-game'),
 
   // Game
   roundNumberSpan: document.getElementById('round-number'),
   gameWordSpan: document.getElementById('game-word'),
+  backToWordsBtn: document.getElementById('back-to-words'),
   starterPlayerSpan: document.getElementById('starter-player'),
   starterPhase: document.getElementById('starter-phase'),
   scoringPhase: document.getElementById('scoring-phase'),

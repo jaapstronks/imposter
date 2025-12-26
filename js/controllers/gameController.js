@@ -8,9 +8,14 @@ import {
 } from '../views/roundSummaryView.js';
 
 export function revealScoring() {
+  gameState.gameStep = 'scoring';
   // Hide starter phase, show scoring phase
   dom.starterPhase.classList.add('hidden');
   dom.scoringPhase.classList.remove('hidden');
+}
+
+export function backToWords() {
+  showScreen('word');
 }
 
 export function nextRound() {

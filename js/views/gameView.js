@@ -6,14 +6,21 @@ export function renderGameScreen() {
   dom.roundNumberSpan.textContent = gameState.currentRound;
   dom.gameWordSpan.textContent = gameState.currentWord;
 
-  // Select random starter
-  const randomPlayer =
-    gameState.players[Math.floor(Math.random() * gameState.players.length)];
-  dom.starterPlayerSpan.textContent = randomPlayer;
+  // Select random starter (stable for the round, even if you go back and forth)
+  if (!gameState.starterPlayer) {
+    gameState.starterPlayer =
+      gameState.players[Math.floor(Math.random() * gameState.players.length)];
+  }
+  dom.starterPlayerSpan.textContent = gameState.starterPlayer;
 
-  // Show starter phase, hide scoring phase
-  dom.starterPhase.classList.remove('hidden');
-  dom.scoringPhase.classList.add('hidden');
+  // Show starter vs scoring phase based on state (so going back/forth doesn't reset)
+  if (gameState.gameStep === 'scoring') {
+    dom.starterPhase.classList.add('hidden');
+    dom.scoringPhase.classList.remove('hidden');
+  } else {
+    dom.starterPhase.classList.remove('hidden');
+    dom.scoringPhase.classList.add('hidden');
+  }
 
   // Generate scoring options (but don't show yet)
   renderScoringOptions();

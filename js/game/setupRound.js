@@ -6,6 +6,8 @@ export function setupRound() {
   const wordData = dutchWords[Math.floor(Math.random() * dutchWords.length)];
   gameState.currentWord = wordData.word;
   gameState.currentHint = wordData.hint;
+  gameState.starterPlayer = '';
+  gameState.gameStep = 'starter';
 
   // Assign imposters based on mode
   const playerCount = gameState.players.length;
