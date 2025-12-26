@@ -9,6 +9,12 @@ export function showWord(e) {
   dom.wordReveal.classList.remove('hidden');
 
   const currentPlayer = gameState.players[gameState.currentPlayerIndex];
+  if (gameState.trolAllDifferentWords) {
+    const personalWord = gameState.playerWords[currentPlayer] || '...';
+    dom.wordContent.innerHTML = `<div class="regular">${personalWord}</div>`;
+    return;
+  }
+
   const isImposter = gameState.imposters.includes(currentPlayer);
 
   if (isImposter) {

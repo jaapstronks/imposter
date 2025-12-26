@@ -34,7 +34,9 @@ function renderScoringOptions() {
     gameState.players.forEach((player) => {
       const playerWin = document.createElement('div');
       playerWin.className = 'score-btn';
-      playerWin.innerHTML = `${player} begreep dat er geen imposters waren`;
+      playerWin.innerHTML = gameState.trolAllDifferentWords
+        ? `${player} doorzag dat iedereen een ander woord had`
+        : `${player} begreep dat er geen imposters waren`;
       playerWin.addEventListener('click', () =>
         toggleScoring(playerWin, 'player', player)
       );

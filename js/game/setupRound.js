@@ -1,6 +1,16 @@
 import { dutchWords } from '../data/dutchWords.js';
 import { gameState } from '../state.js';
 
+function sampleUniqueWords(count) {
+  const pool = [...dutchWords];
+  // Fisher–Yates shuffle
+  for (let i = pool.length - 1; i > 0; i--) {
+    const j = Math.floor(Math.random() * (i + 1));
+    [pool[i], pool[j]] = [pool[j], pool[i]];
+  }
+  return pool.slice(0, count);
+}
+
 export function setupRound() {
   // Select random word
   const wordData = dutchWords[Math.floor(Math.random() * dutchWords.length)];
@@ -8,12 +18,25 @@ export function setupRound() {
   gameState.currentHint = wordData.hint;
   gameState.starterPlayer = '';
   gameState.gameStep = 'starter';
+  gameState.trolAllDifferentWords = false;
+  gameState.playerWords = {};
 
   // Assign imposters based on mode
   const playerCount = gameState.players.length;
   gameState.imposters = [];
 
   if (gameState.trolMode) {
+    // 1 in 3 rounds: everyone has a different word (no imposters)
+    if (Math.random() < 1 / 3) {
+      gameState.trolAllDifferentWords = true;
+      const samples = sampleUniqueWords(playerCount);
+      for (let i = 0; i < playerCount; i++) {
+        gameState.playerWords[gameState.players[i]] = samples[i].word;
+      }
+      // Keep `imposters` empty for this twist
+      gameState.currentWord = 'Iedereen had een ander woord';
+      gameState.currentHint = '';
+    } else {
     // Trol mode: random number of imposters (0 to all players)
     const possibilities = [];
 
@@ -36,6 +59,7 @@ export function setupRound() {
         const imposter = availablePlayers.splice(randomIndex, 1)[0];
         gameState.imposters.push(imposter);
       }
+    }
     }
   } else {
     // Normal mode: always exactly 1 imposter

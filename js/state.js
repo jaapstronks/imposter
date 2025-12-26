@@ -10,6 +10,8 @@ export function createInitialGameState() {
     currentHint: '',
     starterPlayer: '',
     gameStep: 'starter', // starter | scoring
+    trolAllDifferentWords: false,
+    playerWords: {}, // { [playerName]: word }
     scores: {},
     gamePhase: 'setup', // setup, reveal, playing, scoring, ended
     allWordsRevealed: false,
