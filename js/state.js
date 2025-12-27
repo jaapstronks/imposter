@@ -11,7 +11,10 @@ export function createInitialGameState() {
     starterPlayer: '',
     gameStep: 'starter', // starter | scoring
     trolAllDifferentWords: false,
+    trolAllButOneImposter: false,
+    trolNonImposter: '',
     playerWords: {}, // { [playerName]: word }
+    imposterHints: {}, // { [playerName]: hint }
     scores: {},
     gamePhase: 'setup', // setup, reveal, playing, scoring, ended
     allWordsRevealed: false,

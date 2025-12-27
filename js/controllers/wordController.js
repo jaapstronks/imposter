@@ -19,9 +19,15 @@ export function showWord(e) {
 
   if (isImposter) {
     if (gameState.hintMode) {
-      dom.wordContent.innerHTML = `<div class="imposter">Je bent de IMPOSTER!<br><br>Hint: ${gameState.currentHint}</div>`;
+      const hintForThisImposter =
+        gameState.imposterHints[currentPlayer] || gameState.currentHint;
+      dom.wordContent.innerHTML = gameState.trolAllButOneImposter
+        ? `<div class="imposter">Bijna iedereen is de IMPOSTER!<br><br>Hint: ${hintForThisImposter}</div>`
+        : `<div class="imposter">Je bent de IMPOSTER!<br><br>Hint: ${hintForThisImposter}</div>`;
     } else {
-      dom.wordContent.innerHTML = `<div class="imposter">Je bent de IMPOSTER!</div>`;
+      dom.wordContent.innerHTML = gameState.trolAllButOneImposter
+        ? `<div class="imposter">Bijna iedereen is de IMPOSTER!</div>`
+        : `<div class="imposter">Je bent de IMPOSTER!</div>`;
     }
   } else {
     // Check if there are no imposters in trol mode

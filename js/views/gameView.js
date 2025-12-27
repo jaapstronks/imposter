@@ -46,7 +46,15 @@ function renderScoringOptions() {
     // Normal scoring with imposters
     const impostersWin = document.createElement('div');
     impostersWin.className = 'score-btn';
-    if (gameState.imposters.length === 1) {
+    if (gameState.trolAllButOneImposter) {
+      const nonImposter =
+        gameState.trolNonImposter ||
+        gameState.players.find((p) => !gameState.imposters.includes(p)) ||
+        '';
+      impostersWin.innerHTML = nonImposter
+        ? `Imposters winnen: iedereen behalve ${nonImposter} (niet ontdekt)`
+        : `Imposters winnen: bijna iedereen (niet ontdekt)`;
+    } else if (gameState.imposters.length === 1) {
       impostersWin.innerHTML = `Imposter wint: ${gameState.imposters[0]} (niet ontdekt)`;
     } else {
       impostersWin.innerHTML = `Imposters winnen: ${gameState.imposters.join(
@@ -61,7 +69,15 @@ function renderScoringOptions() {
     // Add option for imposter declaring themselves and guessing word
     const impostersGuessed = document.createElement('div');
     impostersGuessed.className = 'score-btn';
-    if (gameState.imposters.length === 1) {
+    if (gameState.trolAllButOneImposter) {
+      const nonImposter =
+        gameState.trolNonImposter ||
+        gameState.players.find((p) => !gameState.imposters.includes(p)) ||
+        '';
+      impostersGuessed.innerHTML = nonImposter
+        ? `Imposters winnen: iedereen behalve ${nonImposter} (bekenden zichzelf & raadden woord)`
+        : `Imposters winnen: bijna iedereen (bekenden zichzelf & raadden woord)`;
+    } else if (gameState.imposters.length === 1) {
       impostersGuessed.innerHTML = `Imposter wint: ${gameState.imposters[0]} (bekende zichzelf & raadde woord)`;
     } else {
       impostersGuessed.innerHTML = `Imposters winnen: ${gameState.imposters.join(
